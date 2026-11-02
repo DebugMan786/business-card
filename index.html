@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>三国名片</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript">
+		const THEME_KEY="***";
+		const mediaDark=window.matchMedia('(prefers-color-scheme:dark)');
+		//读取主题
+		function readTheme(){
+			const tempTheme=localStorage.getItem(THEME_KEY);
+			if(tempTheme==='dark'||tempTheme==='light')
+					return tempTheme;
+			return 'system';
+		}
+		function isDarkFor(theme){
+			if(theme==='system')
+				return mediaDark.matches;
+			return theme==='dark'?true:false;
+		}
+		function applyToHtml(theme){
+			document.documentElement.classList.toggle('dark',isDarkFor(theme));
+		}
+		applyToHtml(readTheme());
+
+
+  </script>
+ </head>
+
+
+ <body>
+	<main class="card">
+		<header>
+			<h1>诸葛亮</h1>
+			<p class="tagline">字孔明，道号卧龙（先生）。<br/>
+			来者可是诸葛孔明？</p>
+		</header>
+		
+		<section aria-labelledby="info-title">
+			<h2 id="info-title">基本信息</h2>
+			<dl class="info">
+				<dt>坐标</dt>
+					<dd>荆州</dd>
+				<dt>在做</dt>
+					<dd>北伐</dd>
+				<dt>在学</dt>
+					<dd>《出师表》</dd>
+			</dl>
+		</section>
+
+		<section aria-labelledby="draft-title">
+			<h2 id="draft-title">求贤令草稿</h2>
+			<label for="draft">正文</label>
+			<div class="draft-wrap">
+				<textarea id="draft" rows="4" placeholder="今日特颁求贤令……"></textarea>
+				<p class="counter" id="counter" aria-live="polite"></p>
+			</div>
+		</section>
+
+		<footer class="actions">
+			<div class="theme-bar" role="group" aria-label="主题选择">
+				<button type="button" class="theme-btn" id="btnLight">浅色</button>
+				<button type="button" class="theme-btn" id="btnDark">深色</button>
+				<button type="button" class="theme-btn" id="btnSystem">跟随系统</button>
+			</div>
+			<a href="mailto:you@example.com">联系我</a>
+		</footer>
+	</main>
+	
+	<script src="main.js"></script>
+ </body>
+</html>
+  
